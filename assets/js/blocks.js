@@ -3,7 +3,6 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType, registerBlockVariation } from '@wordpress/blocks';
-const { select } = wp.data;
 
 // Split the Edit component out.
 import Edit from './edit';
