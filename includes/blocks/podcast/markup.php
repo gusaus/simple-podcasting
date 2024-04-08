@@ -32,7 +32,8 @@ if ( ! $attributes['id'] ) {
 
 $post_id        = get_the_id();
 $podcast_shows  = get_the_terms( get_the_ID(), 'podcasting_podcasts' );
-$show_name      = $podcast_shows ? $podcast_shows[0]->name : '';
+$podcast_show   = $podcast_shows ? $podcast_shows[0] : '';
+$show_name      = $podcast_show ? $podcast_show->name : '';
 $src            = get_post_meta( $post_id, 'src', true );
 $duration       = get_post_meta( $post_id, 'podcast_duration', true );
 $explicit       = get_post_meta( $post_id, 'podcast_explicit', true );
@@ -43,13 +44,21 @@ $season_number  = get_post_meta( $post_id, 'podcast_season_number', true );
 ?>
 <div class="wp-block-podcasting-podcast-outer">
 	<div class="wp-block-podcasting-podcast__container">
-		<?php if ( has_post_thumbnail() && $attributes['displayArt'] ) : ?>
+		<?php if ( $attributes['displayArt'] ) : ?>
 			<div class="wp-block-podcasting-podcast__show-art">
 				<div class="wp-block-podcasting-podcast__image">
-					<?php the_post_thumbnail( 'medium' ); ?>
+					<?php
+					if ( has_post_thumbnail() ) :
+						the_post_thumbnail( 'medium' ); 
+					else:
+						$term_image_id = get_term_meta( $podcast_show->term_id, 'podcasting_image', true );
+						echo wp_get_attachment_image( $term_image_id, 'medium' );
+					endif;
+					?>
 				</div>
 			</div>
 		<?php endif; ?>
+
 		<div class="wp-block-podcasting-podcast__details">
 			<?php if ( $attributes['displayEpisodeTitle'] ) : ?>
 				<h3 class="wp-block-podcasting-podcast__show-title">

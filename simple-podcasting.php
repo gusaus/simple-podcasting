@@ -255,11 +255,10 @@ add_action( 'admin_init', __NAMESPACE__ . '\setup_edit_screen' );
  * Registers block assets for Podcast block.
  */
 function register_podcast_block_assets() {
-	if ( ! file_exists( PODCASTING_PATH . 'dist/podcast.asset.php' ) ) {
-		return;
+	$block_asset = [ 'version' => PODCASTING_VERSION, 'dependencies' => [] ];
+	if ( file_exists( PODCASTING_PATH . 'dist/podcast.asset.php' ) ) {
+		$block_asset = require PODCASTING_PATH . 'dist/podcast.asset.php';
 	}
-
-	$block_asset = require PODCASTING_PATH . 'dist/podcast.asset.php';
 
 	wp_register_style(
 		'podcast-block',
@@ -277,11 +276,10 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_podcast_block_asset
  * Registers block assets for Podcast block in admin.
  */
 function register_podcast_block_assets_admin() {
-	if ( ! file_exists( PODCASTING_PATH . 'dist/podcast.asset.php' ) ) {
-		return;
+	$block_asset = [ 'version' => PODCASTING_VERSION, 'dependencies' => [] ];
+	if ( file_exists( PODCASTING_PATH . 'dist/podcast.asset.php' ) ) {
+		$block_asset = require PODCASTING_PATH . 'dist/podcast.asset.php';
 	}
-
-	$block_asset = require PODCASTING_PATH . 'dist/podcast.asset.php';
 
 	wp_register_style(
 		'podcast-block',

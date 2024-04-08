@@ -394,7 +394,7 @@ class Edit extends Component {
 
 								<div className="wp-block-podcasting-podcast__details">
 
-									{displayEpisodeTitle && (
+									{displayEpisodeNumber && episodeNumber && (
 										<h3 className="wp-block-podcasting-podcast__show-title">
 											{displayEpisodeNumber && (
 												<span>
@@ -411,7 +411,7 @@ class Edit extends Component {
 												{showName}
 											</span>
 										)}
-										{displaySeasonNumber && (
+										{displaySeasonNumber && seasonNumber && (
 											<span className="wp-block-podcasting-podcast__season">
 												{__(
 													'Season: ',
@@ -420,7 +420,7 @@ class Edit extends Component {
 												{seasonNumber}
 											</span>
 										)}
-										{displayEpisodeNumber && (
+										{displayEpisodeNumber && episodeNumber && (
 											<span className="wp-block-podcasting-podcast__episode">
 												{__('Episode: ', 'simple-podcasting')}
 												{episodeNumber}
@@ -429,7 +429,7 @@ class Edit extends Component {
 									</div>
 
 									<div className="wp-block-podcasting-podcast__show-details">
-										{displayDuration && (
+										{displayDuration && duration && (
 											<span className="wp-block-podcasting-podcast__duration">
 												{__('Listen Time: ', 'simple-podcasting')}
 												{duration}
