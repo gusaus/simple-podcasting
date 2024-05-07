@@ -1,5 +1,4 @@
 const { __ } = wp.i18n;
-const { Component } = wp.element;
 const {
 	BlockControls,
 	InspectorControls,
@@ -57,7 +56,6 @@ function useFeaturedImage() {
 }
 
 function Edit( props ) {
-	console.log( props )
 	const {
 		className,
 		setAttributes,
