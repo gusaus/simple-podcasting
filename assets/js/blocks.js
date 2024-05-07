@@ -87,7 +87,6 @@ export default registerBlockType(
 				type: 'string',
 				source: 'meta',
 				meta: 'podcast_episode_type',
-				default: 'none',
 			},
 			displayDuration: {
 				type: 'boolean',

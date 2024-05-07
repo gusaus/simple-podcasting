@@ -48,12 +48,12 @@ $season_number  = get_post_meta( $post_id, 'podcast_season_number', true );
 			<div class="wp-block-podcasting-podcast__show-art">
 				<div class="wp-block-podcasting-podcast__image">
 					<?php
-					if ( has_post_thumbnail() ) :
+					if ( has_post_thumbnail() ) {
 						the_post_thumbnail( 'medium' );
-					else :
+					} else if ( $podcast_show instanceof \WP_Term ) {
 						$term_image_id = get_term_meta( $podcast_show->term_id, 'podcasting_image', true );
 						echo wp_get_attachment_image( $term_image_id, 'medium' );
-					endif;
+					};
 					?>
 				</div>
 			</div>
