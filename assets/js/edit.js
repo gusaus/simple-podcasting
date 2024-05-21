@@ -490,7 +490,7 @@ function Edit( props ) {
 											{duration}
 										</span>
 									)}
-									{displayEpisodeType && (
+									{displayEpisodeType && (episodeType !== 'none') && (
 										<span className="wp-block-podcasting-podcast__episode-type">
 											{__(
 												'Episode type: ',
