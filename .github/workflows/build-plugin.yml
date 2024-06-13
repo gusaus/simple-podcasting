@@ -1,0 +1,38 @@
+name: Build WordPress Plugin
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0' # or the PHP version you need
+
+    - name: Install dependencies
+      run: composer install # if you are using Composer for dependencies
+
+    - name: Zip plugin
+      run: |
+        mkdir -p build
+        zip -r build/plugin.zip . -x '*.git*' -x 'build/*' -x 'node_modules/*' -x '.github/*'
+      shell: bash
+
+    - name: Upload ZIP artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: plugin-zip
+        path: build/plugin.zip
