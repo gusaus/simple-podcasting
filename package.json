@@ -27,8 +27,8 @@
     "wp-env": "wp-env",
     "env:start": "wp-env start",
     "env:stop": "wp-env stop",
-    "cypress:open": "cypress open --browser chrome --config-file tests/cypress/config.config.js",
-    "cypress:run": "cypress run --browser chrome --config-file tests/cypress/config.config.js"
+    "cypress:open": "cypress open --browser chromium --config-file tests/cypress/config.config.js",
+    "cypress:run": "cypress run --browser chromium --config-file tests/cypress/config.config.js"
   },
   "lint-staged": {
     "*.php": [
@@ -39,7 +39,10 @@
     ]
   },
   "devDependencies": {
-    "@10up/cypress-wp-utils": "^0.2.0",
+    "@10up/cypress-wp-utils": "^0.3.0",
+    "@wordpress/plugins": "^6.2.0",
+    "@wordpress/prettier-config": "^2.2.0",
+    "ansi-regex": ">=6.0.1",
     "@wordpress/env": "^9.2.0",
     "@wordpress/scripts": "^27.1.0",
     "copy-webpack-plugin": "^11.0.0",
